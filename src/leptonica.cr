@@ -1,6 +1,5 @@
-# TODO: Write documentation for `Leptonica`
+require "./lib_leptonica"
+
 module Leptonica
   VERSION = "0.1.0"
-
-  # TODO: Put your code here
 end
