@@ -1,0 +1,9 @@
+name: leptonica
+version: 0.1.0
+
+authors:
+  - Jack Thorne <jack@kilmer.co>
+
+crystal: 1.6.2
+
+license: MIT
