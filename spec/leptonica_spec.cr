@@ -1,9 +1,8 @@
 require "./spec_helper"
 
 describe Leptonica do
-  # TODO: Write tests
-
-  it "works" do
-    false.should eq(true)
+  it "dimentions" do
+    pix = Leptonica::Pix.new("./spec/fixtures/stop.png")
+    pix.dimentions.should eq({489, 488, 32})
   end
 end
