@@ -39,12 +39,25 @@ module Leptonica
       end
     end
 
+    def initialize(pix : LibLeptonica::Pix*)
+      @handle = pix
+    end
+
     def finalize
       LibLeptonica.pix_destroy(pointerof(@handle))
     end
 
     def to_unsafe
       @handle
+    end
+
+    def scale(xscale : Int, yscale : Int) : self
+      scale(xscale / 100, yscale / 100)
+    end
+
+    def scale(xscale : Float, yscale : Float) : self
+      pix = LibLeptonica.pix_scale(self, 0.35, 0.35)
+      Leptonica::Pix.new(pix)
     end
 
     def dimentions
