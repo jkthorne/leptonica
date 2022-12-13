@@ -64,6 +64,53 @@ class Leptonica::Pix
     to_slice.to_unsafe_bytes
   end
 
+  def ==(other) : Bool
+    LibLeptonica.pix_equal(self.to_unsafe, other.to_unsafe, out result)
+    result == 1
+  end
+
+  def height : Int32
+    LibLeptonica.pix_get_height(self)
+  end
+
+  def height(height : Int32) : Int32
+    LibLeptonica.pix_set_height(self, height)
+  end
+
+  def width : Int32
+    LibLeptonica.pix_get_width(self)
+  end
+
+  def width(width : Int32) : Int32
+    LibLeptonica.pix_set_width(self, width)
+  end
+
+  def depth : Int32
+    LibLeptonica.pix_get_depth(self)
+  end
+
+  def depth(depth : Int32) : Int32
+    LibLeptonica.pix_set_depth(self, depth)
+  end
+
+  def pixel(x : Int32, y : Int32) : UInt32
+    success = LibLeptonica.pix_get_pixel(self, x, y, out pixel)
+    raise "unable to get Pixel(#{x},#{y})" if success == 1
+    pixel
+  end
+
+  def pixel(x : Int32, y : Int32, pixel : Int32) : Int32
+    success = LibLeptonica.pix_set_pixel(self, x, y, pixel)
+    raise "unable to set Pixel(#{x},#{y})" if success == 1
+    pixel
+  end
+
+  def pixels : Int32
+    success = LibLeptonica.pix_count_pixels(self, out count, nil)
+    raise "unable to count pixels" if success == 1
+    count
+  end
+
   def scale(xscale : Int, yscale : Int) : self
     scale(xscale / 100, yscale / 100)
   end
