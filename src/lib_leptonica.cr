@@ -1114,6 +1114,8 @@ lib LibLeptonica
   type Pixtiling = PixTiling
   type X__FposT = X_GFposT
 
+  alias AllocFn = (LibC::SizeT -> Void*)
+  alias DeallocFn = (Void* -> Void)
   alias FposT = X__FposT
   alias Int32T = X__Int32T
   alias LFloat32 = LibC::Float
@@ -1138,8 +1140,6 @@ lib LibLeptonica
   alias X_IoMarker = Void
   alias X_IoWideData = Void
 
-  alias AllocFn = (LibC::SizeT -> Void*)
-  alias DeallocFn = (Void* -> Void)
   fun add_colorized_gray_to_cmap = addColorizedGrayToCmap(cmap : Pixcmap*, type : LInt32, rval : LInt32, gval : LInt32, bval : LInt32, pna : Numa**) : LOk
   fun affine_invert_xform = affineInvertXform(vc : LFloat32*, pvci : LFloat32**) : LOk
   fun affine_xform_pt = affineXformPt(vc : LFloat32*, x : LInt32, y : LInt32, pxp : LFloat32*, pyp : LFloat32*) : LOk
